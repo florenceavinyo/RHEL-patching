@@ -78,13 +78,6 @@
         state: absent
         instance_id: "{{ temp_instance_id }}"
       register: disassociate_result
-
-    - name: Associate Elastic IP address back to original instance
-      ec2_eip:
-        instance_id: "{{ instance_id }}"
-        ip: "{{ eip }}"
-        region: "{{ region }}"
-        state: present
       
     - name: Start the instance
       ec2:
